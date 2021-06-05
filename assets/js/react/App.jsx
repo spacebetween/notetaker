@@ -16,7 +16,7 @@ const client = new ApolloClient({
 const App = () => {
   return (
     <ApolloProvider client={client}>
-      <Router>
+      <Router basename="/notes">
         <Switch>
           <Route path="/" component={List} />
         </Switch>
