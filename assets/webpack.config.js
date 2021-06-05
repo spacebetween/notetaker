@@ -53,7 +53,18 @@ module.exports = (env, options) => {
     },
     plugins: [
       new MiniCssExtractPlugin({ filename: '../css/app.css' }),
-      new CopyWebpackPlugin([{ from: 'static/', to: '../' }])
+      new CopyWebpackPlugin([{ from: 'static/', to: '../' }]),
+      // Fix "Uncaught ReferenceError: process is not defined"
+      new webpack.DefinePlugin({
+        'process.env.NODE_ENV': JSON.stringify('development')
+      }),
+      new webpack.DefinePlugin({
+        'process': JSON.stringify({
+          env: {
+            NODE_ENV: 'development'
+          }
+        })
+      })
     ]
     .concat(devMode ? [new HardSourceWebpackPlugin()] : [])
   }
