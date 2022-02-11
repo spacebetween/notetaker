@@ -1,6 +1,6 @@
-ARG ELIXIR=1.11.3
-ARG OTP=23.2.5
-FROM hexpm/elixir:$ELIXIR-erlang-$OTP-alpine-3.13.1
+ARG ELIXIR=1.13.2
+ARG OTP=24.2.1
+FROM hexpm/elixir:$ELIXIR-erlang-$OTP-alpine-3.15.0
 ENV MIX_ENV=dev
 RUN apk add --no-progress --update openssl ncurses-libs bash git build-base npm inotify-tools postgresql-client
 ENV ELIXIR_ASSERT_TIMEOUT=10000
